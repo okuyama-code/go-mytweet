@@ -1,0 +1,31 @@
+<body>
+  <h2>詳細</h2>
+
+  <form method="post" action="/update/{{.tweet.ID}}">
+      <p>内容<input type="text" name="tweet" size="30" value="{{.tweet.Content}}" ></p>
+      <p><input type="submit" value="Send"></p>
+  </form>
+</body>
+
+
+
+<!-- <form action="/update/{{.tweet.ID}}" method="post"> -->
+   <!-- ツイートの内容を編集するフォーム -->
+  <!-- <p>内容<input type="text" name="tweet" size="30" value="{{.tweet.Content}}"></p> -->
+  <!-- テキスト入力欄: ツイートの内容を表示し、編集可能にする -->
+  <!-- <p><input type="submit" value="Send"></p> -->
+  <!-- 送信ボタン: フォームの内容を送信する -->
+<!-- </form> -->
+<!-- このコードは、ツイートの内容を編集するためのフォームを作成しています。以下に各行の詳細を説明します:
+
+1行目: form要素の開始タグです。action属性には、フォームのデータを送信する先のURL /update/{{.tweet.ID}} を指定しています。method属性はPOSTメソッドを使用することを示しています。
+
+3行目: 内容というテキストを表示するためのp要素です。
+
+4行目: ツイートの内容を編集するためのテキスト入力欄を作成しています。type="text"は、テキスト入力欄であることを示します。name属性は、この入力欄の値が送信される際のキーとなります。size属性は、入力欄の幅を指定しています。value属性には、元々のツイートの内容 {{.tweet.Content}} を表示しています。
+
+7行目: 送信ボタンを表示するためのp要素です。
+
+8行目: 送信ボタンを作成しています。type="submit"は、送信ボタンであることを示します。value属性には、ボタンの表示テキストを指定しています。
+
+ -->

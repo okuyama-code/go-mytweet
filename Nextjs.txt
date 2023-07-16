@@ -1,0 +1,47 @@
+// pages/index.js
+
+import { useEffect, useState } from 'react';
+
+const IndexPage = () => {
+  const [tweets, setTweets] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/tweets')
+      .then((response) => response.json())
+      .then((data) => setTweets(data.tweets))
+      .catch((error) => console.error(error));
+  }, []);
+
+  return (
+    <div>
+      <h1>ツイート一覧</h1>
+      <ul>
+        {tweets.map((tweet) => (
+          <li key={tweet.id}>{tweet.content}</li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default IndexPage;
+jsx
+Copy code
+// pages/api/tweets.js
+
+import db from '../../db'; // データベース操作を行うための別ファイルを想定
+
+const handler = (req, res) => {
+  const tweets = db.getAllTweets(); // データベースからツイートを取得する関数を呼び出し（実装済みを想定）
+
+  res.status(200).json({ tweets });
+};
+
+export default handler;
+このコードでは、Next.jsを使ったサーバーサイドレンダリングされたReactアプリケーションを作成しています。
+
+IndexPageコンポーネントは、アプリケーションのメインページ（/）を表します。useEffectフック内でfetch関数を使用してサーバーからツイートを取得します。取得したツイートはuseStateフックを使ってコンポーネントの状態に保存されます。その後、ツイートはmap関数を使って配列内の要素として表示されます。
+
+APIエンドポイント（/api/tweets）は、pages/apiディレクトリ内の別ファイルで定義されています。このエンドポイントは、データベースからツイートを取得（db.getAllTweets()関数を使用、実装済みを想定）し、それをJSONレスポンスとして返します。
+
+提供されたコードは、APIエンドポイントからデータを取得するNext.jsの使用例を示すための簡略化されたコードです。具体的なデータベースのセットアップや要件に合わせて適宜カスタマイズして拡張する必要があります。

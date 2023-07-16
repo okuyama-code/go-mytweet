@@ -1,0 +1,24 @@
+管理者で実行
+net start mysql57
+
+mysql --user=root --password
+
+
+ create database test;
+
+ create user 'test'@'localhost' IDENTIFIED BY '12345678';
+
+  grant all privileges on test.* to 'test'@'localhost';
+
+ flush privileges;
+
+exit
+
+
+go mod init twitter
+
+ go get -u github.com/gin-gonic/gin
+
+ go get -u github.com/go-sql-driver/mysql
+
+ go get -u github.com/jinzhu/gorm
